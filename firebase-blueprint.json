@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A patient user in the fertility app.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "The unique identifier for the user."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The user's email address."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The user's full name."
+        },
+        "photoURL": {
+          "type": "string",
+          "format": "uri",
+          "description": "The user's profile picture URL."
+        },
+        "role": {
+          "type": "string",
+          "enum": ["patient", "admin"],
+          "description": "The user's role in the system."
+        },
+        "gender": {
+          "type": "string",
+          "enum": ["Female"],
+          "description": "The user's gender (restricted to Female for this app)."
+        },
+        "phone": {
+          "type": "string",
+          "description": "The user's phone number."
+        },
+        "dob": {
+          "type": "string",
+          "format": "date",
+          "description": "The user's date of birth."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the user account was created."
+        }
+      },
+      "required": ["uid", "email", "role"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "The collection of user profiles."
+    }
+  }
+}
